@@ -42,8 +42,7 @@ public class ProdutoPorQuilo extends Produto{
 				 +", Preço por quilo: " 
 				 + precoPorQuilo 
 				 +", Peso do Produto: " 
-				 + pesoProduto
-			 	 +"\n";
+				 + pesoProduto;
 	}
 
 

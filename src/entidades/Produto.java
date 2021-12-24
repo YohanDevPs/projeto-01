@@ -21,6 +21,4 @@ public abstract class Produto {
 	}
 	public abstract Double totalPagamento();
 	
-	
-	
 }

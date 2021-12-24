@@ -43,8 +43,7 @@ public class ProdutoPorQuantidade extends Produto{
 				+ ", Preço por unidade: "
 				+ precoPorUnidade
 				+ " ,Quantidade: "
-				+ quantidade
-				+"\n";
+				+ quantidade;
 	}
 }
 				

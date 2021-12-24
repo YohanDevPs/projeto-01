@@ -2,6 +2,7 @@ package aplicacao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import entidades.Cliente;
@@ -19,7 +20,7 @@ public class Main {
 		Produto produtoQuilo = new ProdutoPorQuilo();
 		Produto produtoUnidade = new ProdutoPorQuantidade();
 		
-		System.out.println("Há clientes? ");
+		System.out.print("Há clientes? ");
 		char existeCliente = sc.next().charAt(0);
 		
 		while(existeCliente == 's') {
@@ -30,15 +31,16 @@ public class Main {
 			int cpf = sc.nextInt();
 			listaCliente.add(new Cliente(nomeCliente, cpf));
 		
-			System.out.println("quantos produtos?");
+			System.out.print("quantos produtos? ");
 			int qt = sc.nextInt();
+			System.out.println();
 			
 			for(int i = 0; i< qt; i++) {
-				
-				System.out.print("O produto é por peso ou quantidade:? p/q");
+				System.out.print("O produto é por peso ou quantidade:? p/q: ");
 				char ch = sc.next().charAt(0);
 				
 				if(ch == 'p') {
+					System.out.println();
 					System.out.print("Digite o nome do produto: ");
 					String nomeProduto = sc.next();
 					System.out.print("Defina o preço por quilo do produto: ");
@@ -47,7 +49,10 @@ public class Main {
 					double pesoProduto = sc.nextDouble();
 					produtoQuilo = new ProdutoPorQuilo(nomeProduto, precoQuilo, pesoProduto);
 					listProduto.add(produtoQuilo);
+					System.out.println();
+					
 				}else {
+					System.out.println();
 					System.out.print("Digite o nome do produto: ");
 					String nomeProduto = sc.next();
 					System.out.print("Digite o preço por unidade: ");
@@ -57,20 +62,23 @@ public class Main {
 					
 					produtoUnidade = new ProdutoPorQuantidade(nomeProduto, quantidade, precoUnidade);
 					listProduto.add(produtoUnidade);
+					System.out.println();
 				}
 			}
 			double soma = 0;
 			for(Produto ls : listProduto) {
 				soma += ls.totalPagamento();
 			}
-			System.out.print( listaCliente);
-			System.out.println(listProduto+"\n Pagamento total: "+soma);
+			
+			System.out.println(listaCliente);
+			System.out.println(listProduto+"\nPagamento total: "+ String.format("%.2f", soma));
 			listProduto.clear();
+			listaCliente.clear();
 			
 			System.out.println("Há algum outro cliente? s/n");
 			existeCliente = sc.next().charAt(0);
 		}
-	
+	System.out.println("Fim do programa");
 		
 		sc.close();	
 	}
