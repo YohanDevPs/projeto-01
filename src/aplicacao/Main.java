@@ -1,6 +1,8 @@
 package aplicacao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ import entidades.ProdutoPorQuilo;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		sc.useLocale(Locale.US);
 
 		List<Produto> listProduto = new ArrayList<>();
 		List<Cliente> listaCliente = new ArrayList<>();
@@ -20,7 +23,7 @@ public class Main {
 		Produto produtoQuilo = new ProdutoPorQuilo();
 		Produto produtoUnidade = new ProdutoPorQuantidade();
 		
-		System.out.print("Há clientes? ");
+		System.out.print("Há clientes? s/n: ");
 		char existeCliente = sc.next().charAt(0);
 		
 		while(existeCliente == 's') {
@@ -34,9 +37,10 @@ public class Main {
 			System.out.print("quantos produtos? ");
 			int qt = sc.nextInt();
 			System.out.println();
+		
 			
 			for(int i = 0; i< qt; i++) {
-				System.out.print("O produto é por peso ou quantidade:? p/q: ");
+				System.out.print("O produto é por peso ou quantidade? p/q: ");
 				char ch = sc.next().charAt(0);
 				
 				if(ch == 'p') {
@@ -69,13 +73,15 @@ public class Main {
 			for(Produto ls : listProduto) {
 				soma += ls.totalPagamento();
 			}
+
+			System.out.println("Data:"+LocalDate.now());
 			
 			System.out.println(listaCliente);
 			System.out.println(listProduto+"\nPagamento total: "+ String.format("%.2f", soma));
 			listProduto.clear();
 			listaCliente.clear();
 			
-			System.out.println("Há algum outro cliente? s/n");
+			System.out.print("Há algum outro cliente? s/n: ");
 			existeCliente = sc.next().charAt(0);
 		}
 	System.out.println("Fim do programa");
