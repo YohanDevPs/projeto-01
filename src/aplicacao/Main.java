@@ -55,7 +55,7 @@ public class Main {
 					listProduto.add(produtoQuilo);
 					System.out.println();
 					
-				}else {
+				} else if ( ch == 'q') {
 					System.out.println();
 					System.out.print("Digite o nome do produto: ");
 					String nomeProduto = sc.next();
@@ -67,6 +67,10 @@ public class Main {
 					produtoUnidade = new ProdutoPorQuantidade(nomeProduto, quantidade, precoUnidade);
 					listProduto.add(produtoUnidade);
 					System.out.println();
+				}
+				else {
+					System.out.println("Digite 'p' para peso ou 'q' para quantidade" );
+					i--;
 				}
 			}
 			double soma = 0;
